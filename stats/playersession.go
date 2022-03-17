@@ -1,6 +1,6 @@
 package stats
 
-import "aftermath.link/repo/am-types/wargaming"
+import "github.com/byvko-dev/am-types/wargaming"
 
 type PlayerSession struct {
 	TotalBattles   int `bson:"totalBattles" json:"totalBattles"`

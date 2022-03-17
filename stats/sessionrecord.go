@@ -4,7 +4,7 @@ import (
 	"sort"
 	"time"
 
-	"aftermath.link/repo/am-types/wargaming"
+	"github.com/byvko-dev/am-types/wargaming"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 

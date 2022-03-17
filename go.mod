@@ -1,4 +1,4 @@
-module aftermath.link/repo/am-types
+module github.com/byvko-dev/am-types
 
 go 1.17
 
