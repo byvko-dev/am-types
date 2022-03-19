@@ -3,8 +3,8 @@ package users
 import (
 	"time"
 
-	"github.com/byvko-dev/am-types/discord"
-	"github.com/byvko-dev/am-types/wargaming"
+	"github.com/byvko-dev/am-types/discord/v1"
+	"github.com/byvko-dev/am-types/wargaming/v1"
 )
 
 type GlobalUser struct {
