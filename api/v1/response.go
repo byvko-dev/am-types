@@ -6,6 +6,6 @@ type ResponseWithError struct {
 }
 
 type ResponseError struct {
-	Error   string `json:"error" firestore:"error" bson:"error"`
+	Message string `json:"message" firestore:"message" bson:"message"`
 	Context string `json:"context" firestore:"context" bson:"context"`
 }
