@@ -8,4 +8,5 @@ type StatsRequest struct {
 	SortKey       string `bson:"sort_key" json:"sort_key"`
 	TankLimit     int    `bson:"detailed_limit" json:"detailed_limit"`
 	IncludeRating bool   `bson:"include_rating" json:"include_rating"`
+	Profile       string `json:"profile"`
 }
