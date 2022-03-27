@@ -1,4 +1,4 @@
-package wargaming
+package statistics
 
 // AchievementsFrame - Represents all achievements of a player
 type AchievementsFrame struct {

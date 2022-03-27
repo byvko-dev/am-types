@@ -1,4 +1,4 @@
-package wargaming
+package statistics
 
 // VehicleStats - Player Vehicle stats struct, used to return final data
 type VehicleStatsFrame struct {

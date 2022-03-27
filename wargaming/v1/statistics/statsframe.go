@@ -1,4 +1,4 @@
-package wargaming
+package statistics
 
 // StatsFrame - Stats frame struct to unpack json and bson
 type StatsFrame struct {
