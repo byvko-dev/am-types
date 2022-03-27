@@ -11,11 +11,13 @@ type Command struct {
 
 	User users.CompleteProfile `json:"user" bson:"user"`
 
-	Unsafe struct {
-		UserID  string                                        `json:"-" bson:"-"`
-		Options RegisterOptions                               `json:"-" bson:"-"`
-		Session disgord.Session                               `json:"-" bson:"-"`
-		Message *disgord.Message                              `json:"-" bson:"-"`
-		Reply   func(c Command, content ...interface{}) error `json:"-" bson:"-"`
-	} `json:"-" bson:"-"`
+	Unsafe InternalOptions `json:"-" bson:"-"`
+}
+
+type InternalOptions struct {
+	UserID  string                                        `json:"-" bson:"-"`
+	Options RegisterOptions                               `json:"-" bson:"-"`
+	Session disgord.Session                               `json:"-" bson:"-"`
+	Message *disgord.Message                              `json:"-" bson:"-"`
+	Reply   func(c Command, content ...interface{}) error `json:"-" bson:"-"`
 }
