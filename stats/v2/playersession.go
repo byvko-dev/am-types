@@ -1,15 +1,15 @@
 package stats
 
-import "github.com/byvko-dev/am-types/wargaming"
+import "github.com/byvko-dev/am-types/wargaming/v1/statistics"
 
 type PlayerSession struct {
 	TotalBattles   int `bson:"totalBattles" json:"totalBattles"`
 	LastBattleTime int `bson:"lastBattleTime" json:"lastBattleTime"`
 
-	RegularBattles  wargaming.StatsFrame                `bson:"regularBattles" json:"regularBattles"`
-	RegularVehicles map[int]wargaming.VehicleStatsFrame `bson:"regularVehicles" json:"regularVehicles"`
+	RegularBattles  statistics.StatsFrame                `bson:"regularBattles" json:"regularBattles"`
+	RegularVehicles map[int]statistics.VehicleStatsFrame `bson:"regularVehicles" json:"regularVehicles"`
 
-	RatingBattles wargaming.StatsFrame `bson:"ratingBattles" json:"ratingBattles"`
+	RatingBattles statistics.StatsFrame `bson:"ratingBattles" json:"ratingBattles"`
 }
 
 // Adds playerSession b to playerSession a

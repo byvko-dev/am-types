@@ -4,7 +4,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/byvko-dev/am-types/wargaming"
+	"github.com/byvko-dev/am-types/wargaming/v1/accounts"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -31,7 +31,7 @@ func (sd StoreDuration) IsValid() bool {
 // Represents a record in the stats collection
 type SessionRecord struct {
 	ID       primitive.ObjectID `bson:"_id" json:"id"` // Unique Record ID
-	PlayerID wargaming.PlayerID `bson:"playerId" json:"playerId"`
+	PlayerID accounts.PlayerID  `bson:"playerId" json:"playerId"`
 
 	CreationTime   time.Time `bson:"creationTime" json:"creationTime"`     // Time of record creation
 	LastUpdateTime time.Time `bson:"lastUpdateTime" json:"lastUpdateTime"` // Time of last record update
