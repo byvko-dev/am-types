@@ -1,6 +1,6 @@
 package api
 
-import "github.com/byvko-dev/am-types/dataprep/v1/block"
+import "github.com/byvko-dev/am-types/dataprep/block/v1"
 
 type StatsCardsData struct {
 	StatusIcons []block.Block `json:"statusIcons" bson:"statusIcons"`
