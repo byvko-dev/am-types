@@ -6,7 +6,8 @@ type StatsRequest struct {
 	Realm         string `bson:"realm" json:"realm"`
 	Days          int    `bson:"days" json:"days"`
 	Locale        string `json:"locale" bson:"locale"`
-	Profile       string `json:"profile" bson:"profile"`
+	Style         string `json:"style" bson:"style"`
+	Preset        string `json:"preset" bson:"preset"`
 	SortKey       string `bson:"sort_key" json:"sort_key"`
 	TankLimit     int    `bson:"detailed_limit" json:"detailed_limit"`
 	IncludeRating bool   `bson:"include_rating" json:"include_rating"`
