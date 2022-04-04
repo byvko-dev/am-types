@@ -14,7 +14,7 @@ type UserFeatures struct {
 
 const PreviewAccess Feature = "preview_access"
 const EnhancedSecurity Feature = "enhanced_security"
-const DiscordAdminCommands Feature = ("discord_admin_commands")
+const DiscordAdminCommands Feature = "discord_admin_commands"
 
 const PremiumBypass Feature = "premium_bypass"
 const CustomizeProfile Feature = "customize_profile"
