@@ -12,9 +12,11 @@ const AlignItemsVertical AlignItemsValue = "vertical"
 const AlignItemsHorizontal AlignItemsValue = "horizontal"
 
 type Style struct {
-	Color           color.RGBA `json:"color" bson:"color"`
-	BackgroundColor color.RGBA `json:"backgroundColor" bson:"backgroundColor"`
-	BackgroundImage []byte     `json:"backgroundImage" bson:"backgroundImage"`
+	Color               color.RGBA `json:"color" bson:"color"`
+	BackgroundColor     color.RGBA `json:"backgroundColor" bson:"backgroundColor"`
+	BackgroundImage     []byte     `json:"backgroundImage" bson:"backgroundImage"`
+	BackgroundImageBlur float64    `json:"backgroundImageBlur" bson:"backgroundImageBlur"`
+	Invisible           bool       `json:"invisible" bson:"invisible"`
 
 	// Font
 	FontName string  `json:"fontFamily" bson:"fontFamily"`
@@ -28,9 +30,12 @@ type Style struct {
 	Gap        float64         `json:"gap" bson:"gap"`
 
 	// Spacing / Sizing
-	PaddingX float64 `json:"paddingX" bson:"paddingX"`
-	PaddingY float64 `json:"paddingY" bson:"paddingY"`
-	Grow     bool    `json:"grow" bson:"grow"`
+	PaddingLeft   float64 `json:"paddingLeft" bson:"paddingLeft"`
+	PaddingRight  float64 `json:"paddingRight" bson:"paddingRight"`
+	PaddingTop    float64 `json:"paddingTop" bson:"paddingTop"`
+	PaddingBottom float64 `json:"paddingBottom" bson:"paddingBottom"`
+	GrowX         bool    `json:"growX" bson:"growX"`
+	GrowY         bool    `json:"growY" bson:"growY"`
 }
 
 // Merge o into s, overwriting s values with o values if they are not nil
@@ -58,3 +63,8 @@ func (s Style) Merge(o Style) Style {
 	}
 	return result
 }
+
+const (
+	IconPositionLeft = iota
+	IconPositionRight
+)
