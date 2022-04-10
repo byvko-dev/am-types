@@ -1,16 +1,20 @@
 package router
 
 import (
+	"encoding/json"
+
 	"github.com/bwmarrin/discordgo"
-	"github.com/byvko-dev/am-types/discord/async"
+	str "github.com/byvko-dev/am-core/helpers/strings"
+	"github.com/byvko-dev/am-types/discord/async/v1"
 )
 
-type ReplyMode int
+type ReplyMode string
 
 const (
-	ReplyModeChannel ReplyMode = iota
-	ReplyModeDirectMessage
-	ReplyModeNone
+	ReplyModeChannel       ReplyMode = "channel"
+	ReplyModeDirectMessage ReplyMode = "directMessage"
+	ReplyModeReaction      ReplyMode = "reaction"
+	ReplyModeNone          ReplyMode = "none"
 )
 
 type Command struct {
@@ -18,17 +22,17 @@ type Command struct {
 	ReactionAck bool               `json:"reactionAck"`
 	Constraits  CommandConstraints `json:"constraints"`
 
-	ReplyMode     `json:"replyMode"`
-	ArgumentsType async.MessageDataType `json:"argumentsType"`
+	ReplyMode `json:"replyMode" validate:"required"`
+	TopicName string `json:"topicName" validate:"required"`
 
-	Name            string   `json:"name"`
-	Aliases         []string `json:"aliases"`
-	HelpDescription string   `json:"description"`
+	HelpDescription string `json:"description"`
 
 	MessageSettings     `json:"messageSettings"`
 	InteractionSettings `json:"interaction_settings"`
 
-	Handler func(*Command, *HandlerPayload) error `json:"-"`
+	Payload      *HandlerPayload       `json:"payload"`
+	Handler      func(*Command) error  `json:"-"`
+	ErrorHandler func(*Command, error) `json:"-"`
 }
 
 func (c *Command) MakeInteractionSettings() *discordgo.ApplicationCommand {
@@ -40,20 +44,13 @@ func (c *Command) MakeInteractionSettings() *discordgo.ApplicationCommand {
 	}
 }
 
-func (c *Command) MakeRemotePayload(input *HandlerPayload) (interface{}, error) {
-	switch c.ArgumentsType {
-	case async.Empty:
-		return nil, nil
-
-	case async.DebugRequest:
-		payload := make(map[string]interface{})
-		payload["command"] = c.Name
-		payload["args"] = input.Arguments
-		return payload, nil
-
-	default:
-		return nil, ErrInvalidCommandArgsType
-	}
+func (c *Command) MakeRemotePayload(input *HandlerPayload) ([]byte, error) {
+	var request async.Message
+	request.Files = input.Files
+	request.Metadata = input.Metadata
+	request.Arguments = input.Arguments
+	request.Locale = str.Or(input.User.Locale, input.Metadata.GuildLocale)
+	return json.Marshal(request)
 }
 
 type CommandConstraints struct {
@@ -65,7 +62,8 @@ type CommandConstraints struct {
 }
 
 type MessageSettings struct {
-	Name string `json:"name"`
+	Name    string   `json:"name"`
+	Aliases []string `json:"aliases"`
 
 	NameTag        string `json:"nameTag"`
 	DescriptionTag string `json:"descriptionTag"`
@@ -78,7 +76,9 @@ func (s *MessageSettings) Empty() bool {
 }
 
 type MessageArgument struct {
-	Name           string `json:"name"`
+	Name    string   `json:"name"`
+	Aliases []string `json:"aliases"`
+
 	NameTag        string `json:"nameTag"`
 	DescriptionTag string `json:"descriptionTag"`
 	Required       bool   `json:"required"`

@@ -6,4 +6,5 @@ type PlayerRawStats struct {
 	PlayerDetails PlayerDetails `json:"player_details"`
 	SessionStats  Session       `json:"session"`
 	LastSession   RetroSession  `json:"last_session"`
+	Error         string        `json:"error"`
 }

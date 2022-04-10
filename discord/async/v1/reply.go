@@ -9,6 +9,15 @@ import (
 	api "github.com/byvko-dev/am-types/api/generic/v1"
 )
 
+type ContentType int
+
+const (
+	ContentTypeText ContentType = iota
+	ContentTypeImage
+	ContentTypeEmbed
+	ContentTypeReaction
+)
+
 type Reply struct {
 	Data  []ReplyChunk      `json:"data"`
 	Error api.ResponseError `json:"error"`
@@ -29,18 +38,18 @@ func (chunk *ReplyChunk) Decode() (interface{}, int, error) {
 	case ContentTypeText:
 		text, ok := chunk.Data.(string)
 		if !ok {
-			return nil, 0, ErrInvalidResponseReceived
+			return nil, 0, ErrInvalidReply
 		}
 		return text, int(ContentTypeText), nil
 
 	case ContentTypeImage:
 		encoded, ok := chunk.Data.(string)
 		if !ok {
-			return nil, 0, ErrInvalidResponseReceived
+			return nil, 0, ErrInvalidReply
 		}
 		raw, err := base64.StdEncoding.DecodeString(encoded)
 		if err != nil {
-			return nil, 0, ErrInvalidResponseReceived
+			return nil, 0, ErrInvalidReply
 		}
 		var image discordgo.File
 		image.Reader = bytes.NewReader(raw)
@@ -54,11 +63,11 @@ func (chunk *ReplyChunk) Decode() (interface{}, int, error) {
 	case ContentTypeReaction:
 		reaction, ok := chunk.Data.(string)
 		if !ok {
-			return nil, 0, ErrInvalidResponseReceived
+			return nil, 0, ErrInvalidReply
 		}
 		return reaction, int(ContentTypeReaction), nil
 
 	default:
-		return nil, 0, ErrInvalidResponseReceived
+		return nil, 0, ErrInvalidReply
 	}
 }
