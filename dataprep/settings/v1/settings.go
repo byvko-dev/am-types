@@ -10,8 +10,7 @@ import (
 
 type GenerationSettings struct {
 	ID               primitive.ObjectID `json:"id" firestore:"id" bson:"_id,omitempty"`
-	Style            string             `json:"style" firestore:"style" bson:"style"`
-	Preset           string             `json:"preset" firestore:"preset" bson:"preset"`
+	Layout           string             `json:"layout" firestore:"layout"`
 	Options          Options            `json:"options,omitempty" firestore:"options" bson:"options"`
 	UseCustomOptions bool               `json:"useCustomOptions,omitempty" firestore:"useCustomOptions" bson:"useCustomOptions"`
 	LastUsed         time.Time          `json:"lastUsed,omitempty" firestore:"lastUsed" bson:"lastUsed"`

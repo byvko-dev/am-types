@@ -7,9 +7,17 @@ import (
 
 // Block content alignment
 type AlignItemsValue string
+type JustifyContentValue string
 
-const AlignItemsVertical AlignItemsValue = "vertical"
-const AlignItemsHorizontal AlignItemsValue = "horizontal"
+const (
+	AlignItemsVertical   AlignItemsValue = "vertical"
+	AlignItemsHorizontal AlignItemsValue = "horizontal"
+
+	JustifyContentStart        JustifyContentValue = "start"
+	JustifyContentCenter       JustifyContentValue = "center"
+	JustifyContentEnd          JustifyContentValue = "end"
+	JustifyContentSpaceBetween JustifyContentValue = "space-between"
+)
 
 type Style struct {
 	Color               color.RGBA `json:"color" bson:"color"`
@@ -26,8 +34,9 @@ type Style struct {
 	BorderRadius float64 `json:"borderRadius" bson:"borderRadius"`
 
 	// Alignment
-	AlignItems AlignItemsValue `json:"alignItems" bson:"alignItems"`
-	Gap        float64         `json:"gap" bson:"gap"`
+	JustifyContent JustifyContentValue `json:"justifyContent" bson:"justifyContent"`
+	AlignItems     AlignItemsValue     `json:"alignItems" bson:"alignItems"`
+	Gap            float64             `json:"gap" bson:"gap"`
 
 	// Spacing / Sizing
 	PaddingLeft   float64 `json:"paddingLeft" bson:"paddingLeft"`
@@ -36,6 +45,10 @@ type Style struct {
 	PaddingBottom float64 `json:"paddingBottom" bson:"paddingBottom"`
 	GrowX         bool    `json:"growX" bson:"growX"`
 	GrowY         bool    `json:"growY" bson:"growY"`
+
+	Width    float64 `json:"width" bson:"width"`
+	MaxWidth float64 `json:"maxWidth" bson:"maxWidth"`
+	MinWidth float64 `json:"minWidth" bson:"minWidth"`
 }
 
 // Merge o into s, overwriting s values with o values if they are not nil
