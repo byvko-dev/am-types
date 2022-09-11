@@ -5,6 +5,7 @@ import "github.com/byvko-dev/am-types/wargaming/generic/api"
 type ClanID int
 
 type BasicProfile struct {
+	Realm        string            `json:"realm" bson:"realm"`
 	MembersCount int               `json:"members_count" bson:"members_count"`
 	Name         string            `json:"name" bson:"name"`
 	CreatedAt    api.UnixTimestamp `json:"created_at" bson:"created_at"`

@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  tag:
+    desc: Tag the current commit
+    cmds:
+      - git tag -a {{.CLI_ARGS}} -m "Version {{.CLI_ARGS}}"
+      - git push --tags
+  tags:
+    desc: Get the latest git tag
+    cmds:
+      - git describe --abbrev=0
