@@ -1,6 +1,6 @@
 package stats
 
-import "github.com/byvko-dev/am-types/wargaming/v1/statistics"
+import "github.com/byvko-dev/am-types/wargaming/v2/statistics"
 
 type PlayerSession struct {
 	TotalBattles   int `bson:"totalBattles" json:"totalBattles"`
@@ -31,19 +31,19 @@ func (a *PlayerSession) Add(b *PlayerSession) {
 	a.RatingBattles.Add(&b.RatingBattles)
 }
 
-// Substract playerSession b from playerSession a
-func (a *PlayerSession) Substract(b *PlayerSession) {
+// Subtract playerSession b from playerSession a
+func (a *PlayerSession) Subtract(b *PlayerSession) {
 	a.TotalBattles -= b.TotalBattles
 	if a.LastBattleTime > b.LastBattleTime {
 		a.LastBattleTime = b.LastBattleTime
 	}
 
-	a.RegularBattles.Substract(&b.RegularBattles)
+	a.RegularBattles.Subtract(&b.RegularBattles)
 	for id, bStats := range b.RegularVehicles {
 		if aStats, ok := a.RegularVehicles[id]; ok {
-			aStats.Substract(&bStats)
+			aStats.Subtract(&bStats)
 		}
 	}
 
-	a.RatingBattles.Substract(&b.RatingBattles)
+	a.RatingBattles.Subtract(&b.RatingBattles)
 }
