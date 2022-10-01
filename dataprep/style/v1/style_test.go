@@ -14,7 +14,7 @@ func TestStyleOverwriteNonNil(t *testing.T) {
 			// Font
 			FontName:        "somefont",
 			FontSize:        999,
-			BackgroundImage: []byte{1, 2, 3},
+			BackgroundImage: "asdasd",
 
 			// Border
 			BorderRadius: 12,
@@ -26,7 +26,7 @@ func TestStyleOverwriteNonNil(t *testing.T) {
 
 		style2 := Style{
 			Color:           color.RGBA{R: 0, G: 1, B: 0, A: 255},
-			BackgroundImage: []byte{3, 2, 1},
+			BackgroundImage: "dsadsa",
 			FontName:        "default",
 			FontSize:        14,
 			BorderRadius:    0, // nil, should not be overwritten
