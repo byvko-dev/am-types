@@ -17,6 +17,12 @@ type AccountSnapshot struct {
 }
 
 type SnapshotStats struct {
-	Total    statistics.StatsFrame                `json:"total" bson:"total"`
-	Vehicles map[int]statistics.VehicleStatsFrame `json:"vehicles" bson:"vehicles"`
+	Total        statistics.StatsFrame        `json:"total" bson:"total"`
+	Achievements statistics.AchievementsFrame `json:"achievements" bson:"achievements"`
+	Vehicles     map[int]SnapshotVehicleStats `json:"vehicles" bson:"vehicles"`
+}
+
+type SnapshotVehicleStats struct {
+	statistics.VehicleStatsFrame `bson:",inline"`
+	Achievements                 statistics.AchievementsFrame `json:"achievements" bson:"achievements"`
 }
