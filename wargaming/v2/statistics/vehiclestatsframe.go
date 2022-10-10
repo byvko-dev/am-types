@@ -3,9 +3,9 @@ package statistics
 // VehicleStats - Player Vehicle stats struct, used to return final data
 type VehicleStatsFrame struct {
 	Stats          StatsFrame `json:"all" gorm:"embedded"`
-	LastBattleTime int        `json:"last_battle_time" gorm:"column:last_battle_time"`
-	MarkOfMastery  int        `json:"mark_of_mastery" gorm:"column:mark_of_mastery"`
-	TankID         int        `json:"tank_id" gorm:"column:tank_id"`
+	LastBattleTime int        `json:"last_battle_time" gorm:"column:last_battle_time" bson:"last_battle_time"`
+	MarkOfMastery  int        `json:"mark_of_mastery" gorm:"column:mark_of_mastery" bson:"mark_of_mastery"`
+	TankID         int        `json:"tank_id" gorm:"column:tank_id" bson:"tank_id"`
 }
 
 // Adds vehicleStatsFrame a to vehicleStatsFrame b

@@ -17,14 +17,14 @@ type Session struct {
 }
 
 type SessionStats struct {
-	statistics.StatsFrame
+	Total    statistics.StatsFrame       `json:"total" bson:"total"`
 	Ratings  map[string]int              `json:"ratings" bson:"ratings"`
 	Vehicles map[int]SessionVehicleStats `json:"vehicles" bson:"vehicles"`
 }
 
 type SessionVehicleStats struct {
-	statistics.VehicleStatsFrame
-	Ratings  map[string]int    `json:"ratings" bson:"ratings"`
-	TankName map[string]string `json:"tank_name" bson:"tank_name"`
-	TankTier int               `json:"tank_tier" bson:"tank_tier"`
+	Total    statistics.VehicleStatsFrame `json:"total" bson:"total"`
+	Ratings  map[string]int               `json:"ratings" bson:"ratings"`
+	TankName map[string]string            `json:"tank_name" bson:"tank_name"`
+	TankTier int                          `json:"tank_tier" bson:"tank_tier"`
 }

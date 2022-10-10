@@ -17,6 +17,6 @@ type AccountSnapshot struct {
 }
 
 type SnapshotStats struct {
-	statistics.StatsFrame
+	Total    statistics.StatsFrame                `json:"total" bson:"total"`
 	Vehicles map[int]statistics.VehicleStatsFrame `json:"vehicles" bson:"vehicles"`
 }
