@@ -14,7 +14,7 @@ type Session struct {
 	Timestamp     time.Time                    `json:"timestamp" bson:"timestamp"`
 	LastBattle    time.Time                    `json:"last_battle_time" bson:"last_battle_time"`
 	BattlesAll    int                          `json:"battles_random" bson:"battles_random"`
-	StatsAll      statistics.StatsFrame        `json:"stats_random" bson:"stats_random"`
+	StatsAll      statistics.StatsFrame        `jsons:"stats_random" bson:"stats_random"`
 	BattlesRating int                          `json:"battles_rating" bson:"battles_rating"`
 	StatsRating   statistics.StatsFrame        `json:"stats_rating" bson:"stats_rating"`
 	SessionRating int                          `json:"session_wn8" bson:"session_wn8"`
