@@ -17,3 +17,12 @@ const (
 )
 
 var AllLanguages = []string{LangEN, LangRU, LangPL, LangDE, LangFR, LangES, LangTR, LangCS, LangTH, LangKO, LangVI, LangZhCH, LangZhTW}
+
+func GetLocale(locale string) string {
+	for _, l := range AllLanguages {
+		if l == locale {
+			return l
+		}
+	}
+	return LangEN
+}

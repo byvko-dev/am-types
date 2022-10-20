@@ -8,8 +8,5 @@ type AccountSnapshot struct {
 	TotalBattles   int `json:"total_battles" bson:"total_battles"`
 	LastBattleTime int `json:"last_battle_time" bson:"last_battle_time"`
 
-	Stats struct {
-		Regular SnapshotStats `json:"regular" bson:"regular"`
-		Rating  SnapshotStats `json:"rating" bson:"rating"`
-	} `json:"stats" bson:"stats"`
+	Stats CompleteFrame `json:"stats" bson:"stats"`
 }

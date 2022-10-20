@@ -10,17 +10,7 @@ type Session struct {
 	TotalBattles   int `json:"totalBattles" bson:"totalBattles"`
 	LastBattleTime int `json:"lastBattleTime" bson:"lastBattleTime"`
 
-	Stats struct {
-		Regular SessionStats `json:"regular" bson:"regular"`
-		Rating  SessionStats `json:"rating" bson:"rating"`
-	} `json:"stats" bson:"stats"`
-}
-
-type SessionStats struct {
-	Total        statistics.StatsFrame        `json:"total" bson:"total"`
-	Achievements statistics.AchievementsFrame `json:"achievements" bson:"achievements"`
-	Ratings      map[string]int               `json:"ratings" bson:"ratings"`
-	Vehicles     map[int]SessionVehicleStats  `json:"vehicles" bson:"vehicles"`
+	Stats CompleteFrame `json:"stats" bson:"stats"`
 }
 
 type SessionVehicleStats struct {

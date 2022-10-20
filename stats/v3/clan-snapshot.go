@@ -8,8 +8,5 @@ type ClanSnapshot struct {
 	TotalMembers int   `json:"total_members" bson:"total_members"`
 	MemberIDs    []int `json:"member_ids" bson:"member_ids"`
 
-	Stats struct {
-		Regular SnapshotStats `json:"regular" bson:"regular"`
-		Rating  SnapshotStats `json:"rating" bson:"rating"`
-	} `json:"stats" bson:"stats"`
+	Stats CompleteFrame `json:"stats" bson:"stats"`
 }
