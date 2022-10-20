@@ -13,7 +13,7 @@ type Session struct {
 	Stats CompleteFrame `json:"stats" bson:"stats"`
 }
 
-type SessionVehicleStats struct {
+type VehicleStats struct {
 	statistics.VehicleStatsFrame `bson:",inline"`
 	Achievements                 statistics.AchievementsFrame `json:"achievements" bson:"achievements"`
 	Ratings                      map[string]int               `json:"ratings" bson:"ratings"`

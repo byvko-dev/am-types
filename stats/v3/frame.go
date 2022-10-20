@@ -6,7 +6,7 @@ type Frame struct {
 	Total        statistics.StatsFrame        `json:"total" bson:"total"`
 	Achievements statistics.AchievementsFrame `json:"achievements" bson:"achievements"`
 	Ratings      map[string]int               `json:"ratings" bson:"ratings"`
-	Vehicles     map[int]SessionVehicleStats  `json:"vehicles" bson:"vehicles"`
+	Vehicles     map[int]VehicleStats         `json:"vehicles" bson:"vehicles"`
 }
 
 type CompleteFrame struct {
