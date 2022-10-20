@@ -18,7 +18,7 @@ func (a *AchievementsFrame) Add(b *AchievementsFrame) {
 }
 
 // Subtracts b from a
-func (a *AchievementsFrame) Subtracts(b *AchievementsFrame) {
+func (a *AchievementsFrame) Subtract(b *AchievementsFrame) {
 	// Achievements
 	a.MarkOfMastery -= b.MarkOfMastery
 	a.MarkOfMasteryI -= b.MarkOfMasteryI
