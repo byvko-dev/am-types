@@ -1,6 +1,6 @@
-package glossary
+package stats
 
-type VehicleDetails struct {
+type VehicleInfo struct {
 	TankID    int    `json:"tank_id,omitempty" bson:"tank_id,omitempty"`
 	Name      string `json:"name,omitempty" bson:"name,omitempty"`
 	Nation    string `json:"nation,omitempty" bson:"nation,omitempty"`
