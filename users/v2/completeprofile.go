@@ -21,3 +21,22 @@ type CompleteProfile struct {
 func (u *CompleteProfile) Verify() bool {
 	return u.ID != ""
 }
+
+func (u *CompleteProfile) ToUserCheck(banData *UserBan) UserCheck {
+	services := make([]ExternalProfileID, 0, len(u.ExternalProfiles))
+	for _, profile := range u.ExternalProfiles {
+		services = append(services, profile.ExternalProfileID)
+	}
+	check := UserCheck{
+		Locale:         u.Locale,
+		Features:       u.Features,
+		Customizations: u.Customizations,
+		LinkedServices: services,
+	}
+	if banData != nil {
+		check.Banned = time.Now().Before(banData.Expiration) && !banData.Lifted
+		check.BanReason = banData.Reason
+		check.BanNotified = banData.Notified
+	}
+	return check
+}
