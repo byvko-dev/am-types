@@ -38,9 +38,7 @@ func (f *Frame) Subtract(b *Frame) {
 		f.Ratings[key] -= value
 	}
 	for key, value := range b.Vehicles {
-		if _, ok := f.Vehicles[key]; !ok {
-			f.Vehicles[key] = value
-		} else {
+		if _, ok := f.Vehicles[key]; ok {
 			v := f.Vehicles[key]
 			v.Subtract(&value)
 			f.Vehicles[key] = v
