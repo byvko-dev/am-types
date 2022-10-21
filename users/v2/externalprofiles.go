@@ -2,8 +2,8 @@ package users
 
 type ExternalService string
 type ExternalServiceConfig struct {
-	Name   string `json:"name" firestore:"name" bson:"name"`
-	Unique bool   `json:"unique" firestore:"unique" bson:"unique"`
+	Name   ExternalService `json:"name" firestore:"name" bson:"name"`
+	Unique bool            `json:"unique" firestore:"unique" bson:"unique"`
 }
 
 var (
@@ -15,7 +15,7 @@ var (
 		Name:   "discord",
 		Unique: true,
 	}
-	ValidExternalServices = []string{ExternalServiceWargaming.Name, ExternalServiceDiscord.Name}
+	ValidExternalServices = []ExternalService{ExternalServiceWargaming.Name, ExternalServiceDiscord.Name}
 )
 
 type ExternalConnection struct {
