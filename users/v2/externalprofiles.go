@@ -15,6 +15,7 @@ var (
 		Name:   "discord",
 		Unique: true,
 	}
+	ValidExternalServices = []string{ExternalServiceWargaming.Name, ExternalServiceDiscord.Name}
 )
 
 type ExternalConnection struct {
