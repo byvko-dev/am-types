@@ -7,7 +7,9 @@ import (
 type CompleteProfile struct {
 	ID string `json:"id" firestore:"id" bson:"_id,omitempty"`
 
-	Locale         string         `json:"locale" firestore:"locale" bson:"locale"`
+	Locale string `json:"locale" firestore:"locale" bson:"locale"`
+
+	Roles          Role           `json:"roles" firestore:"roles" bson:"roles"`
 	Features       UserFeatures   `json:"features" firestore:"features" bson:"features"`
 	Customizations Customizations `json:"customizations" firestore:"customizations" bson:"customizations"`
 

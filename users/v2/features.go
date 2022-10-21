@@ -12,12 +12,16 @@ type UserFeatures struct {
 	Disabled Features `json:"disabled" bson:"disabled"`
 }
 
+func (u *UserFeatures) SetDefaults() {
+	u.Enabled = []Feature{CustomizeSettings, CustomizeBackgrounds}
+	u.Disabled = []Feature{}
+}
+
 const PreviewAccess Feature = "preview_access"
 const EnhancedSecurity Feature = "enhanced_security"
-const DiscordAdminCommands Feature = "discord_admin_commands"
 
 const PremiumBypass Feature = "premium_bypass"
-const CustomizeProfile Feature = "customize_profile"
+const CustomizeSettings Feature = "customize_settings"
 const CustomizeBackgrounds Feature = "customize_backgrounds"
 
 func (all *Features) Includes(f Feature) bool {
