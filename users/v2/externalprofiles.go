@@ -15,7 +15,9 @@ var (
 		Name:   "discord",
 		Unique: true,
 	}
-	ValidExternalServices = []ExternalService{ExternalServiceWargaming.Name, ExternalServiceDiscord.Name}
+	// Indexes need to match
+	ValidExternalServiceNames = []ExternalService{ExternalServiceWargaming.Name, ExternalServiceDiscord.Name}
+	ValidExternalServices     = []ExternalServiceConfig{ExternalServiceWargaming, ExternalServiceDiscord}
 )
 
 type ExternalConnection struct {
