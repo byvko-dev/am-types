@@ -5,6 +5,7 @@ type UserCheck struct {
 	BanReason   string `json:"ban_reason" bson:"ban_reason"`
 	BanNotified bool   `json:"ban_notified" bson:"ban_notified"`
 
+	Roles          Roles          `json:"roles" firestore:"roles" bson:"roles"`
 	Locale         string         `json:"locale" firestore:"locale" bson:"locale"`
 	Features       UserFeatures   `json:"features" firestore:"features" bson:"features"`
 	Customizations Customizations `json:"customizations" firestore:"customizations" bson:"customizations"`
