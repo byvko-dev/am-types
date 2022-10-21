@@ -25,6 +25,7 @@ func (u *CompleteProfile) Verify() bool {
 func (u *CompleteProfile) ToUserCheck(banData *UserBan, connections []ExternalConnection) UserCheck {
 	services := make([]ExternalProfileID, 0, len(connections))
 	for _, profile := range connections {
+		profile.ExternalProfileID.Verified = profile.AccessToken != ""
 		services = append(services, profile.ExternalProfileID)
 	}
 	check := UserCheck{

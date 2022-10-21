@@ -18,4 +18,5 @@ type ExternalConnection struct {
 type ExternalProfileID struct {
 	Service    ExternalService `json:"service" firestore:"service" bson:"service"`
 	ExternalID string          `json:"external_id" firestore:"external_id" bson:"external_id"`
+	Verified   bool            `json:"verified" firestore:"-" bson:"-"`
 }
