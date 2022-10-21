@@ -29,6 +29,7 @@ func (u *CompleteProfile) ToUserCheck(banData *UserBan, connections []ExternalCo
 		services = append(services, profile.ExternalProfileID)
 	}
 	check := UserCheck{
+		ID:             u.ID,
 		Roles:          u.Roles,
 		Locale:         u.Locale,
 		Features:       u.Features,

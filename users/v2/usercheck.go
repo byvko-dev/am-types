@@ -1,6 +1,7 @@
 package users
 
 type UserCheck struct {
+	ID          string `json:"id" bson:"-"`
 	Banned      bool   `json:"banned" bson:"banned"`
 	BanReason   string `json:"ban_reason" bson:"ban_reason"`
 	BanNotified bool   `json:"ban_notified" bson:"ban_notified"`
