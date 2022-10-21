@@ -1,9 +1,21 @@
 package users
 
 type ExternalService string
+type ExternalServiceConfig struct {
+	Name   string `json:"name" firestore:"name" bson:"name"`
+	Unique bool   `json:"unique" firestore:"unique" bson:"unique"`
+}
 
-const ExternalServiceWargaming ExternalService = "wargaming"
-const ExternalServiceDiscord ExternalService = "discord"
+var (
+	ExternalServiceWargaming = ExternalServiceConfig{
+		Name:   "wargaming",
+		Unique: false,
+	}
+	ExternalServiceDiscord = ExternalServiceConfig{
+		Name:   "discord",
+		Unique: true,
+	}
+)
 
 type ExternalConnection struct {
 	ID                string `bson:"_id,omitempty" json:"id"`
