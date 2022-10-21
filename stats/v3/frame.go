@@ -35,7 +35,9 @@ func (f *Frame) Subtract(b *Frame) {
 	f.Total.Subtract(&b.Total)
 	f.Achievements.Subtract(&b.Achievements)
 	for key, value := range b.Ratings {
-		f.Ratings[key] -= value
+		if _, ok := f.Ratings[key]; ok {
+			f.Ratings[key] -= value
+		}
 	}
 	for key, value := range b.Vehicles {
 		if _, ok := f.Vehicles[key]; ok {
