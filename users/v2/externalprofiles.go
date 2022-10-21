@@ -1,21 +1,14 @@
 package users
 
-import (
-	"github.com/byvko-dev/am-types/wargaming/v1/accounts"
-)
+type ExternalService string
 
-type ExternalProfiles struct {
-	Discord   DiscordProfile   `json:"discord" firestore:"discord" bson:"discord"`
-	Wargaming WargamingProfile `json:"wargaming" firestore:"wargaming" bson:"wargaming"`
-}
+const ExternalServiceWargaming ExternalService = "wargaming"
+const ExternalServiceDiscord ExternalService = "discord"
 
-type DiscordProfile struct {
-	Verified bool   `json:"verified" firestore:"verified" bson:"verified"`
-	UserID   string `json:"user_id" firestore:"user_id" bson:"user_id"`
-}
-
-type WargamingProfile struct {
-	Verified bool              `json:"verified" firestore:"verified" bson:"verified"`
-	PlayerID accounts.PlayerID `json:"player_id" firestore:"player_id" bson:"player_id"`
-	Realm    string            `json:"realm" firestore:"realm" bson:"realm"`
+type ExternalProfile struct {
+	Service      ExternalService   `json:"service" firestore:"service" bson:"service"`
+	ExternalID   string            `json:"external_id" firestore:"external_id" bson:"external_id"`
+	AccessToken  string            `json:"access_token" firestore:"access_token" bson:"access_token"`
+	RefreshToken string            `json:"refresh_token" firestore:"refresh_token" bson:"refresh_token"`
+	Meta         map[string]string `json:"meta" firestore:"meta" bson:"meta"`
 }

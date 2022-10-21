@@ -5,12 +5,13 @@ import (
 )
 
 type CompleteProfile struct {
-	ID     string  `json:"id" firestore:"id" bson:"id"`
-	Locale string  `json:"locale" firestore:"locale" bson:"locale"`
-	Ban    UserBan `json:"ban" firestore:"ban" bson:"ban"`
+	ID string `json:"id" firestore:"id" bson:"_id,omitempty"`
 
-	Features UserFeatures     `json:"features" firestore:"features" bson:"features"`
-	Profiles ExternalProfiles `json:"profiles" firestore:"profiles" bson:"profiles"`
+	Locale         string         `json:"locale" firestore:"locale" bson:"locale"`
+	Features       UserFeatures   `json:"features" firestore:"features" bson:"features"`
+	Customizations Customizations `json:"customizations" firestore:"customizations" bson:"customizations"`
+
+	ExternalProfiles []ExternalProfile `json:"external_profiles" firestore:"external_profiles" bson:"external_profiles"`
 
 	LastSeen  time.Time `json:"last_seen" firestore:"last_seen" bson:"last_seen"`
 	CreatedAt time.Time `json:"created_at" firestore:"created_at" bson:"created_at"`
