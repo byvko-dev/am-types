@@ -10,7 +10,7 @@ const PinTypeRemoteImage PinType = "remoteImage"
 const PinTypeIcon PinType = "icon"
 
 type Pin struct {
-	ID          string `bson:"_id,omitempty" json:"id,omitempty"`
+	ID          string `bson:"_id,omitempty" json:"id"`
 	Name        string `bson:"name" json:"name"`
 	Label       string `bson:"label" json:"label"`
 	Description string `bson:"description" json:"description"`

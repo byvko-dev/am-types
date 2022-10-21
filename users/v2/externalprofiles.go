@@ -6,6 +6,8 @@ const ExternalServiceWargaming ExternalService = "wargaming"
 const ExternalServiceDiscord ExternalService = "discord"
 
 type ExternalConnection struct {
+	ID string `bson:"_id,omitempty" json:"id"`
+
 	UserID string `json:"user_id" bson:"user_id"`
 	ExternalProfileID
 	AccessToken  string            `json:"access_token" firestore:"access_token" bson:"access_token"`
