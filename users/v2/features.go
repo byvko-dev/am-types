@@ -25,5 +25,5 @@ const CustomizeSettings Feature = "customize_settings"
 const CustomizeBackgrounds Feature = "customize_backgrounds"
 
 func (all *Features) Includes(f Feature) bool {
-	return slices.Contains(all, f) > -1
+	return slices.Contains(*all, f) > -1
 }

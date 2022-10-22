@@ -17,12 +17,7 @@ const (
 )
 
 func (all *Roles) Includes(r Role) bool {
-	for _, role := range *all {
-		if role == r {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(*all, r) > -1
 }
 
 func (all *Roles) Add(r Role) {
@@ -33,7 +28,7 @@ func (all *Roles) Add(r Role) {
 }
 
 func (all *Roles) Remove(r Role) {
-	index := slices.Contains(all, r)
+	index := slices.Contains(*all, r)
 	if index == -1 {
 		return
 	}
