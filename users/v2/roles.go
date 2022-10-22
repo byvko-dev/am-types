@@ -8,7 +8,9 @@ type Roles []Role
 
 const (
 	RoleMasterAdmin Role = "masterAdmin"
-	RoleDeveloper   Role = "developer"
+	RoleModerator   Role = "moderator"
+
+	RoleDeveloper Role = "developer"
 
 	RolePaidPlus        Role = "amPlus"
 	RolePaidSupporter   Role = "amSupporter"
