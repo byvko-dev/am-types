@@ -8,5 +8,5 @@ type ResponseWithError struct {
 type ResponseError struct {
 	Message string `json:"message" firestore:"message" bson:"message"`
 	Context string `json:"context" firestore:"context" bson:"context"`
-	Code    int    `json:"code" firestore:"code" bson:"code"`
+	Code    string `json:"code" firestore:"code" bson:"code"`
 }
